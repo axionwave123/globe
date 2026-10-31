@@ -17,7 +17,6 @@ export function ControlStudio() {
   const setAmbientIntensity = useLabStore((s) => s.setAmbientIntensity)
   const resetPanels = useLabStore((s) => s.resetPanels)
   const randomizeColors = useLabStore((s) => s.randomizeColors)
-  const isAnimating = useLabStore((s) => s.isAnimating)
 
   const selected = selectedPanelId ? panels[selectedPanelId] : null
 
@@ -119,13 +118,13 @@ export function ControlStudio() {
     [selectedPanelId, selected?.color, selected?.intensity]
   )
 
-  // Keep the info field in sync
+  // Keep the info field in sync (cast to avoid leva schema narrowing)
   useEffect(() => {
     setPanelControls({
       info: selectedPanelId ?? 'Click any LED panel…',
       color: selected?.color ?? '#00ffff',
       intensity: selected?.intensity ?? 1.2,
-    })
+    } as Record<string, unknown>)
   }, [selectedPanelId, selected, setPanelControls])
 
   return null // Leva renders its own UI
