@@ -70,7 +70,7 @@ const createInitialPanels = (): Record<PanelId, PanelState> => {
   return panels
 }
 
-export const useLabStore = create<LabState>((set, get) => ({
+export const useLabStore = create<LabState>((set) => ({
   panels: createInitialPanels(),
   globalIntensity: 1.4,
   animationSpeed: 1.0,
