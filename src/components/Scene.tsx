@@ -8,8 +8,7 @@ import {
   Stars,
   Float,
 } from '@react-three/drei'
-import { EffectComposer, Bloom, Vignette, ChromaticAberration } from '@react-three/postprocessing'
-import { BlendFunction } from 'postprocessing'
+import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
 import * as THREE from 'three'
 import { KineticMachine } from './KineticMachine'
 import { useLabStore } from '../store'
@@ -79,10 +78,6 @@ function PostFX() {
         mipmapBlur
       />
       <Vignette offset={0.25} darkness={0.65} />
-      <ChromaticAberration
-        blendFunction={BlendFunction.NORMAL}
-        offset={new THREE.Vector2(0.0006, 0.0006)}
-      />
     </EffectComposer>
   )
 }
